@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js'></script>
 <script type="text/javascript">
 function nut(){
@@ -8,3 +9,38 @@ function nut(){
 <div class="containter">
 <button type="button" onclick='nut()' name="button"></button>
 </div>
+=======
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>CSV Tests</h2>
+<!-- See https://stackoverflow.com/questions/14446447/how-to-read-a-local-text-file -->
+<form action="/csv" method="post">
+  CSV:<br>
+  <textarea rows="10" id="csvdata" name="csvdata" placeholder="Paste Data here"></textarea>
+  <br>
+  <input type="file" onchange='openFile(event)' name="csvraw"/>
+  <br>
+  <button>Submit</button>
+</form> 
+
+</body>
+<script>
+var openFile = function(event){
+    var input = event.target;
+    var reader = new FileReader();
+    reader.onload = function(){
+        var text = reader.result;
+        var node = document.getElementById('csvdata');
+        node.value = text;
+        console.log(reader.result.substring(0, 200));
+    };
+    reader.readAsText(input.files[0]);
+
+}
+
+
+</script>
+</html>
+>>>>>>> ed64b0f23ba98ef4d399ab26dd077fbc9b7f55af

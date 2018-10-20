@@ -32,11 +32,18 @@ module.exports.routes = {
 
   'GET /account':            { action: 'account/view-account-overview' },
   'GET /account/password':   { action: 'account/view-edit-password' },
+<<<<<<< HEAD
   'GET /account/profile':    { action: 'account/view-edit-profile', locals: {layout: true}},
   'GET /numbers' : {action: 'Numbers/index'},
   'GET /upload' : {action: 'Numbers/GUpload'},
   'POST /group' : {action: 'Numbers/group'},
   'POST /upload' : {action: 'Numbers/upload'},
+=======
+  'GET /account/profile':    { action: 'account/view-edit-profile' },
+  'GET /numbers':            { action: 'Numbers/index'},
+  'GET /csv':                { action: 'Numbers/csv'},
+  'POST /csv':               { action: 'Numbers/parseCSV'},
+>>>>>>> ed64b0f23ba98ef4d399ab26dd077fbc9b7f55af
 
   //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗
   //  ╠═╣╠═╝║  ║╣ ║║║ ║║╠═╝║ ║║║║║ ║ ╚═╗

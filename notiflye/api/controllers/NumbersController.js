@@ -5,9 +5,10 @@
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
  // req.session.userId
-
+const Papa = require('papaparse')
 module.exports = {
   index: function(req, res){
+<<<<<<< HEAD
     User.findOne({'id': req.session.userId}).exec(function(err, user){
       if (err) {
         return res.serverError(err)
@@ -40,6 +41,17 @@ module.exports = {
   },
   GUpload: function(req, res){
     res.view('upload.ejs')
+=======
+    res.view('index.ejs', {user: req.session.userId})
+  },
+  csv: function(req,res){
+    res.view('upload.ejs', {})
+  },
+  parseCSV: function(req, res){s
+    let csvString = req.body.csvdata;s
+    console.log(Papa.parse(csvString, {header: true}));
+
+>>>>>>> ed64b0f23ba98ef4d399ab26dd077fbc9b7f55af
   }
 
 };
