@@ -20,12 +20,26 @@ module.exports = {
 
   },
   group: function(req, res){
-      User.update({'id': req.session.userId}, req.params('group')).exec(function(err, user){
+      User.update({'id': req.session.userId}, req.param('group')).exec(function(err, user){
         if (err) {
           return res.serverError(err)
         }
-
+        return res.send(user)
       })
+  },
+  upload: function(req, res){
+    for (var i = 0; i < req.param('info').length; i++) {
+     User.update({'id': req.session.userId} ,{'owner': req.session.userId, 'info': req.param('info')[i]}).exec(function(err, user){
+       if (err) {
+         return console.log(err)
+       }
+       console.log(user);
+     })
+    }
+    res.send(200)
+  },
+  GUpload: function(req, res){
+    res.view('upload.ejs')
   }
 
 };
