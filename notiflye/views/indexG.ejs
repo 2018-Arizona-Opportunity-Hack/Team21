@@ -2,14 +2,14 @@
   <div class="container">
     <h1>Dashboard</h1><hr>
 
-    <%- ._Each(user, function(user){ %>
+    <% _.each(user, function(user){ %>
 
     <div class="card" style='width:10rem'>
       <div class="card-head"><br><center>
-        <h5><%= user.group.name %></h5></center><hr>
+        <h5><%= user.name %></h5></center><hr>
       </div>
       <div class="card-body">
-        <p><%= user.group.desc %></p><br>
+        <p><%= user.desc %></p><br>
         <button style='float:right' type="button" class='btn btn-info' name="button">View</button>
       </div>
 
@@ -20,5 +20,3 @@
 
 </div>
 </div>
-
-<%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>

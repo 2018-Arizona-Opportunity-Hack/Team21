@@ -1,0 +1,18 @@
+<script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js'></script>
+<script type="text/javascript">
+function test(){
+console.log('HERE');
+axios.post('/csv', document.getElementById('data').value).then(function(data){
+  console.log(data);
+})
+}
+
+</script>
+<div class="container">
+<form class="" action="/csv" method="post">
+  <input type="text" placeholder='Data Here' name="data" id='data' value="">
+  <button type="button" onclick='test()' name="button"></button>
+</form>
+
+
+</div>

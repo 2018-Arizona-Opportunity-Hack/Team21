@@ -32,8 +32,12 @@ module.exports.routes = {
 
   'GET /account':            { action: 'account/view-account-overview' },
   'GET /account/password':   { action: 'account/view-edit-password' },
-  'GET /account/profile':    { action: 'account/view-edit-profile' },
+  'GET /account/profile':    { action: 'account/view-edit-profile', locals: {layout: true}},
   'GET /numbers' : {action: 'Numbers/index'},
+  'GET /csv' : {action: 'Numbers/csv'},
+  'POST /csv' : {action: 'Numbers/viewMe'},
+
+
 
   //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗
   //  ╠═╣╠═╝║  ║╣ ║║║ ║║╠═╝║ ║║║║║ ║ ╚═╗
