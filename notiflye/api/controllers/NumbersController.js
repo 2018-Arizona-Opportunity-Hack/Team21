@@ -13,8 +13,8 @@ module.exports = {
   csv: function(req,res){
     res.view('upload.ejs', {})
   },
-  parseCSV: function(req, res){s
-    let csvString = req.body.csvdata;s
+  parseCSV: function(req, res){
+    let csvString = req.body.csvdata;
     console.log(Papa.parse(csvString, {header: true}));
 
   }
