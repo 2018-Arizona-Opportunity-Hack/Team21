@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>CSV Tests</h2>
+<!-- See https://stackoverflow.com/questions/14446447/how-to-read-a-local-text-file -->
+<form action="/csv" method="post">
+  CSV:<br>
+  <textarea rows="10" id="csvdata" name="csvdata" placeholder="Paste Data here"></textarea>
+  <br>
+  <input type="file" onchange='openFile(event)' name="csvraw"/>
+  <br>
+  <button>Submit</button>
+</form> 
+
+</body>
+<script>
+var openFile = function(event){
+    var input = event.target;
+    var reader = new FileReader();
+    reader.onload = function(){
+        var text = reader.result;
+        var node = document.getElementById('csvdata');
+        node.value = text;
+        console.log(reader.result.substring(0, 200));
+    };
+    reader.readAsText(input.files[0]);
+
+}
+
+
+</script>
+</html>
