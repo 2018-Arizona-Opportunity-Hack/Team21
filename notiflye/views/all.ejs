@@ -1,0 +1,28 @@
+<div id="welcome">
+  <div class="container">
+    <h1>All Entries</h1><hr>
+    <table class="table">
+<thead>
+  <tr>
+    <th scope="col">Name</th>
+    <th scope="col">Phone Number</th>
+    <th scope="col">Email</th>
+  </tr>
+</thead>
+<tbody>
+    <% _.each(user, function(user){ %>
+    <tr>
+      <td> <%= user.name %></td>
+      <td> <%= user.phoneNumber %> </td>
+      <td><%= user.email %></td>
+    </tr>
+
+<% }) %>
+
+</tbody>
+</table>
+    </div>
+</div>
+</div>
+
+<%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>

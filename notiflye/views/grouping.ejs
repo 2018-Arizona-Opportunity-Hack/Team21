@@ -1,0 +1,68 @@
+<script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js'>
+
+</script>
+<div class="container">
+  <center>
+    <h1>Groups</h1><hr>
+  </center>
+  <b style='margin-left:10rem'>Add Group</b>
+
+  <center>
+  <input type="text" style='width:50rem' class='form-control' name="" id='addGroup' placeholder='Group Name' value=""> <button type="button" onclick='addGroup()' class='btn btn-info' style='margin-top:-4rem;margin-left:55rem' name="button">+</button>
+</center>
+<center>
+  <div id="cBody">
+
+<% _.each(groups, function(group){ %>
+
+  <div id='<%= group.name %>' class="col-md-4">
+    <div class="card">
+      <div class="card-head">
+      <center>
+      <a href="/view/group?id=<%= group.name %>">  <h3> <%= group.name %></h3></a>
+        </center>
+
+      </div>
+    </div><br>
+  </div>
+  <button id="<%= group.name %>btn" style='margin-top:-7rem;margin-left:30rem' onclick='remove("<%= group.name %>")' type="button" class='btn btn-danger' name="button">Remove</button>
+  <a href="/new/msg/?id=<%= group.name %>"> <button type="button" style='position:absolute;margin-left:-39rem;margin-top:-4rem;' class='btn btn-info' name="button">New Message</button></a>
+
+<% }) %>
+</div>
+</center>
+
+</div>
+
+<script type="text/javascript">
+  function remove(id){
+    var elem = document.getElementById(id)
+    var btn = document.getElementById(id + 'btn')
+
+
+    axios.post('/remGroup', {'name': id}).then(function(data){
+      console.log(data.status);
+      return console.log(data.data);
+    })
+    elem.remove()
+    btn.remove()
+  }
+
+  function addGroup(){
+    var data = document.getElementById('addGroup').value
+  if (document.getElementById(data) == undefined) {
+
+    axios.post('/group', {"name": data}).then(function(rdata){
+      if (rdata.status == 200) {
+        var string = '  <div id="'+ data + '" class="col-md-4"><div class="card"><div class="card-head"><center> <a href="/view/group?id="'+data + '">  <h3>'+ data + ' </h3></a></center></div></div><br></div><button id="'+ data + 'btn" style="margin-top:-7rem;margin-left:30rem" onclick="remove(`' + data+'`)"" type="button" class="btn btn-danger" name="button">Remove</button>'
+        document.getElementById('cBody').innerHTML = document.getElementById('cBody').innerHTML + string
+      }
+
+    })
+  }
+  else{
+    alert('Cannot Add Duplicate Name!!')
+    document.getElementById('group').value = ''
+  }
+  }
+</script>

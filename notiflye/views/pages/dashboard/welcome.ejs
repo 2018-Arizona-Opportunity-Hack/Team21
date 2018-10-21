@@ -1,17 +1,55 @@
 <div id="welcome">
   <div class="container">
     <h1>Dashboard</h1><hr>
-    <div class="card" style='width:10rem'>
-      <div class="card-head">
-        <h1>Test</h1>
-      </div>
-      <div class="card-body">
-        <p>Test</p><br>
-        <button type="button" class='btn btn-info' name="button">Test</button>
-      </div>
+    <table class="table">
+<thead>
+  <tr>
+    <th scope="col">Name</th>
+    <th scope="col">Phone Number</th>
+    <th scope="col">Email</th>
+  </tr>
+</thead>
+<tbody>
 
+<% var x = 0 %>
+    <% _.each(user, function(user){ %>
+
+      <% x = x + 1 %>
+    <tr id='<%= x %>'>
+      <td> <%= user.name %></td>
+      <td> <%= user.phoneNumber %> </td>
+      <td><%= user.email %></td>
+    </tr>
+
+<% }) %>
+
+</tbody>
+</table>
+<a style='float:right' href="/all">Show All</a>
+</div><br>
+    <div class="">
+      <center>
+      <a href="/notiflye"> <h3>Create Notifications</h3></a>
+      <center>
+        <center>
+        <a href="/grouping"> <h3>View Groups</h3></a>
+        <center>
+          <center>
+          <a href="/csv"> <h3>Upload CSV File & Add Groups</h3></a>
+          <center>
     </div>
 </div>
-</div>
 
+</div>
+<script type="text/javascript">
+val = <%= x %>
+if (val > 5 ) {
+  console.log(val);
+  for (var i = 1; i < val - 3; i++) {
+    console.log(i);
+
+    document.getElementById(i.toString()).remove()
+  }
+}
+</script>
 <%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>

@@ -1,0 +1,23 @@
+<script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js'>
+
+</script>
+<div class="container">
+<center>
+  <h1>New Message for <%= groups %> </h1><hr>
+</center>
+<div class="">
+  <input type="text" id='sub' class='form-control' placeholder='Subject' name="" value=""><br>
+  <textarea name="name" id='msg' class='form-control' rows="8" cols="80" placeholder='Message Contents'></textarea><br>
+  <button type="button" class='btn btn-info' onclick='send()' style='float:right' name="button">Send</button>
+</div>
+</div>
+<script type="text/javascript">
+function send(){
+  var sub = document.getElementById('sub').value
+  var msg = document.getElementById('msg').value
+  var data = {
+    
+  }
+  axios.post('')
+}
+</script>
