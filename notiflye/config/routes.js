@@ -46,7 +46,7 @@ module.exports.routes = {
   'POST /group': {action: 'Groups/create'},
   'GET /group': {action: 'Groups/index'},
   'GET /all' : {action: 'Numbers/all'},
-
+  'GET /notiflye' : {action: 'Notify/index'},
   //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗
   //  ╠═╣╠═╝║  ║╣ ║║║ ║║╠═╝║ ║║║║║ ║ ╚═╗
   //  ╩ ╩╩  ╩  ╚═╝╝╚╝═╩╝╩  ╚═╝╩╝╚╝ ╩ ╚═╝
