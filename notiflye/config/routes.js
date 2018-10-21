@@ -36,10 +36,17 @@ module.exports.routes = {
   'GET /numbers':            { action: 'Numbers/index'},
   'GET /csv':                { action: 'Numbers/csv'},
   'POST /csv':               { action: 'Numbers/parseCSV'},
+
+  'POST /campaign/create':   { action: 'Campaign/create'},
+  'POST /campaign/edit/:id':  { action: 'Campaign/edit'},
+  'POST /campaign/addGroup/:campaignID/:groupID': { action: 'Campaign/addGroup'},
+  'POST /campaign/removeGroup/:campaignID/:groupID': { action: 'Campaign/removeGroup'},
+
   'POST /search': {action: 'Numbers/search'},
   'POST /group': {action: 'Groups/create'},
   'GET /group': {action: 'Groups/index'},
   'GET /all' : {action: 'Numbers/all'},
+
   //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗
   //  ╠═╣╠═╝║  ║╣ ║║║ ║║╠═╝║ ║║║║║ ║ ╚═╗
   //  ╩ ╩╩  ╩  ╚═╝╝╚╝═╩╝╩  ╚═╝╩╝╚╝ ╩ ╚═╝
