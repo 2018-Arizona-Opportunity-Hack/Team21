@@ -36,7 +36,7 @@ module.exports = {
       if (!csvData.data[i].name == '') {
       csvData.data[i]['owner'] = req.session.userId
         csvData.data[i]['group'] = req.param('group')
-
+        csvData.data[i]['csvid'] = req.param('csvid')
        postData = await Numbers.create(csvData.data[i]).fetch()
       console.log(postData);
     }

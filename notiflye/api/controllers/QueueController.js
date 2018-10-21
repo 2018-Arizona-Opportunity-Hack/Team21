@@ -42,7 +42,7 @@ module.exports = {
               secure: false, // true for 465, false for other ports
               auth: {
                   user: 'notiflye@gmail.com', // generated ethereal user
-                  pass: 'notify123' // generated ethereal password
+                  pass: 'notify' // generated ethereal password
               }
           });
 

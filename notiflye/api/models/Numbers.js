@@ -28,6 +28,10 @@ module.exports = {
       type: 'json',
        columnType: 'array',
       required: false
+    },
+    'csvid': {
+      type: 'String',
+      required: true
     }
   }
 
