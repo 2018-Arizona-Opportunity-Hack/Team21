@@ -17,10 +17,10 @@ module.exports = {
       type: 'String',
       required: true
     },
-    'campaign': {
-      collection: 'campaign',
-      via: 'targetGroups'
-    }
+    // 'campaign': {
+    //   collection: 'campaign',
+    //   via: 'targetGroups'
+    // }
 
   }
 

@@ -40,6 +40,7 @@ module.exports.routes = {
   'POST /campaign/create':   { action: 'Campaign/create'},
   'POST /campaign/edit/:id':  { action: 'Campaign/edit'},
   'POST /campaign/addGroup/:campaignID/:groupID': { action: 'Campaign/addGroup'},
+  'POST /campaign/removeGroup/:campaignID/:groupID': { action: 'Campaign/removeGroup'},
   //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗
   //  ╠═╣╠═╝║  ║╣ ║║║ ║║╠═╝║ ║║║║║ ║ ╚═╗
   //  ╩ ╩╩  ╩  ╚═╝╝╚╝═╩╝╩  ╚═╝╩╝╚╝ ╩ ╚═╝

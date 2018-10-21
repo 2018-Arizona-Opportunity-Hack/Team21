@@ -16,18 +16,18 @@
        type: 'String',
        required: true
      },
-     // 'targetGroups': {
-     //   type: 'json',
-     //   columnType: 'array',
-     //   required: false
-     // },
      'targetGroups': {
-       collection: 'groups',
-       via: 'campaign',
-
+       type: 'json',
+       columnType: 'array',
+       required: false
      },
+    //  'targetGroups': {
+    //    collection: 'groups',
+    //    via: 'campaign',
+
+    //  },
      'groups': {
-         type:'json',
+         type:'ref',
          columnType: 'array',
          required: false
 

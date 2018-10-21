@@ -52,67 +52,75 @@ module.exports = {
         addGroup: async function(req, res){
             let campaignID = req.params.campaignID;
             let groupID = req.params.groupID;
-            console.log(campaignID  + " " + groupID)
-            var result = Campaign.find({'id': campaignID}).limit(1)
-            var found = false
-            if (result.groups == undefined) {
-              result.groups = [groupID]
-            }
-            else{
-              for (var i = 0; i < result.groups.length; i++) {
-                if (groups[i] == groupID) {
-                  found = true
+            
+            Campaign.findOne({'id': campaignID})
+            .exec((error, result) => {
+                if(result.groups){
+                    let groups = result.groups;
+                    let found = false;
+                    for(let i = 0; i < groups.length; i++){
+                        if(groups[i] == groupID){
+                            found = true;
+                            console.log(found)
+                            res.send("Not adding a duplicate entry")
+                            break;
+                        }
+                    }
+                    if(!found){
+                        console.log('groups' + groups)
+                        groups.push(groupID);
+                        Campaign.update({'id': campaignID})
+                        .set({groups: groups})
+                        .fetch()
+                        .exec((queryError, queryResult) =>  {
+                            if(queryError){
+                                res.send(queryError)
+                            }
+                            else{
+                                res.send(queryResult)
+                            }
+                        })
+                    }
                 }
-              }
-              if (found == false) {
-                result.groups.append(groupID)
-              }
+            })
 
-            }
-            console.log(result);
-            console.log(result.targetGroups)
-            var out = await Campaign.update({'id': campaignID}, {'groups': result.targetGroups}).fetch()
-            console.log(out);
-            return res.send(out)
 
-            //
-            // .exec((error, result) => {
-            //     console.log("Got here 1111");
-            //     console.log(result)
-            //     if(error || !result || result.length == 0){
-            //         console.log("Got here 2222");
-            //         res.send("Unable to find result")
-            //         //TODO: Error page
-            //     } else {
-            //         console.log("Got here 3333");
-            //
-            //         var foundMatch = false;
-            //         var index = 0;
+        },
+        removeGroup: function(req,res){
+            let campaignID = req.params.campaignID;
+            let groupID = req.params.groupID;
+            Campaign.findOne({'id': campaignID})
+            .exec((error, result) => {
+                if(!error && result.groups && result.groups.length > 0){
+                    console.log("here");
+                    let found = false;
+                    let groups = result.groups;
+                    for(let i = 0; i < groups.length; i++){
+                        if(groups[i] == groupID && found == false){
+                            groups.splice(i, 1);
+                            found = true;
+                            Campaign.update({'id': campaignID})
+                            .set({groups: groups})
+                            .fetch()
+                            .exec((queryError, queryResult) =>  {
+                                if(queryError){
+                                    res.send(queryError)
+                                }
+                                else{
+                                    res.send(queryResult)
+                                }
+                            })
+                        
+                        }
+                    }
 
-                    // while(!foundMatch && index < result.targetGroups.length){
-                    //     if(result.targetGroups[index] == groupID){
-                    //         foundMatch = true;
-                    //         console.log("Found a match");
-                    //     }
-                    //     index++;
-                    // }
-                    // if(!foundMatch){
-                    //     console.log("Never found a match")
-                    //
-                    //     Campaign.addToCollection(campaignID, 'targetGroups')
-                    //     .members([groupID])
-                    //     .exec((e, m) => {
-                    //         console.log("error" + e);
-                    //         console.log("msg" + m);
-                    //     })
-                    //     // result.targetGroups.push(groupID);
-                    //     // console.log(result)
-                    //     // result.save();
-                    // }
-                // }
-            // })
+                }
+                else {
+                    res.send("Cannot find entry");
+                }
+            })
+
         }
-
 
 
 };
