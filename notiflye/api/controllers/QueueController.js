@@ -125,10 +125,10 @@ module.exports = {
                                         nonResponder.contactPreference.shift();
                                     }
                                 }
-                        
+
                             }
                         })
-                        
+
 
                     })
                 }
@@ -138,12 +138,23 @@ module.exports = {
         })
 
     },
+    message: async function(req, res){
+    var data = await Numbers.find({'owner': req.session.userId, 'group': {contains: req.param('group')}})
+
+    for (var i = 0; i < data.length; i++) {
+      sendEmail( data[i].email, req.param('sub'), req.param('msg'));
+      sendText(data[i].phoneNumber, req.param('sub'), req.param('msg'));
+    }
+
+
+
+    },
     sendCommunications: function(req, res){
 
         let textMessage = "Text Message here";
         let emailContent = "Email content here";
         let subject = "Email subject";
-        let NonResponders = 
+        let NonResponders =
         [
             {'contactPreference': ['email', 'text'],
             'phoneNumber': '+13304516205',

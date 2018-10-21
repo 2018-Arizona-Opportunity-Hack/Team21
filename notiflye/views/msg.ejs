@@ -16,8 +16,12 @@ function send(){
   var sub = document.getElementById('sub').value
   var msg = document.getElementById('msg').value
   var data = {
-    
+    'group': '<%= groups %>',
+    'msg': msg,
+    'sub':sub
   }
-  axios.post('')
+  axios.post('/sendMessage', data).then(function(data){
+    console.log(data);
+  })
 }
 </script>

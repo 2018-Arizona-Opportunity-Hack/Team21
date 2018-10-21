@@ -55,6 +55,7 @@ module.exports.routes = {
     'GET /view/group': {action: 'Numbers/view'},
     'POST /remove/member' : {action: 'Numbers/removeMember'},
     'GET /new/msg' : {action: 'Numbers/msg'},
+    'POST /sendMessage' : {action: 'Queue/message'},
   //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗
   //  ╠═╣╠═╝║  ║╣ ║║║ ║║╠═╝║ ║║║║║ ║ ╚═╗
   //  ╩ ╩╩  ╩  ╚═╝╝╚╝═╩╝╩  ╚═╝╩╝╚╝ ╩ ╚═╝
