@@ -49,7 +49,11 @@ module.exports.routes = {
   'GET /notiflye' : {action: 'Notify/index'},
 
   'GET /testQueue': { action: 'Queue/sendCommunicationss'},
-  'POST /testText' : { action: 'Queue/sendQueue'},
+    'POST /testText' : { action: 'Queue/sendQueue'},
+    'GET /grouping' : {action: 'Numbers/grouping'},
+    'POST /remGroup': {action: 'Numbers/remove'},
+    'GET /view/group': {action: 'Numbers/view'},
+    'POST /remove/member' : {action: 'Numbers/removeMember'},
   //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗
   //  ╠═╣╠═╝║  ║╣ ║║║ ║║╠═╝║ ║║║║║ ║ ╚═╗
   //  ╩ ╩╩  ╩  ╚═╝╝╚╝═╩╝╩  ╚═╝╩╝╚╝ ╩ ╚═╝

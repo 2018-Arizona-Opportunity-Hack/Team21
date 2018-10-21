@@ -1,0 +1,50 @@
+<script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js'></script>
+<div class="container">
+  <center>
+  <h1 id='url'>Viewing Group </h1>
+</center><hr>
+  
+
+<table class="table">
+
+
+<thead>
+  <tr>
+    <th scope="col">Name</th>
+    <th scope="col">Phone Number</th>
+    <th scope="col">Email</th>
+  </tr>
+</thead>
+<tbody>
+<% _.each(groups, function(group){ %>
+
+    <tr id='<%= group.name %>'>
+      <td> <%= group.name %></td>
+      <td> <%= group.phoneNumber %> </td>
+      <td><%= group.email %></td>
+      <td><button type="button"  class='btn btn-danger' onclick='run("<%= decodeURI(group.name) %>")' name="button">Remove From Group</button></td>
+    </tr>
+
+    <% }) %>
+
+
+</tbody>
+</table>
+
+
+<script type="text/javascript">
+  document.getElementById('url').innerHTML = 'Viewing ' + decodeURI(window.location.href.split('?id=')[1])
+
+  function run(id){
+
+  data = {
+    'name' : id,
+    'group': decodeURI(window.location.href.split('?id=')[1])
+  }
+  axios.post('/remove/member', data)
+
+  document.getElementById(id).remove()
+}
+
+</script>
+</div>
