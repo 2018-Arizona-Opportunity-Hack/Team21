@@ -26,7 +26,7 @@ module.exports = {
     })
   },
   getCSV: async function(req, res){
-    let group = req.param.group;
+    // let group = req.param.group;
     var data = await Numbers.find({'owner': req.session.userId, 'group': {contains: req.param('group')}})
     var csv = Papa.unparse(data);
     res.set('Content-Type', 'text/csv');
