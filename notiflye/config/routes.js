@@ -48,6 +48,10 @@ module.exports.routes = {
   'GET /all' : {action: 'Numbers/all'},
   'GET /notiflye' : {action: 'Notify/index'},
     'POST /testText' : { action: 'Queue/sendQueue'},
+    'GET /grouping' : {action: 'Numbers/grouping'},
+    'POST /remGroup': {action: 'Numbers/remove'},
+    'GET /view/group': {action: 'Numbers/view'},
+    'POST /remove/member' : {action: 'Numbers/removeMember'},
   //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗
   //  ╠═╣╠═╝║  ║╣ ║║║ ║║╠═╝║ ║║║║║ ║ ╚═╗
   //  ╩ ╩╩  ╩  ╚═╝╝╚╝═╩╝╩  ╚═╝╩╝╚╝ ╩ ╚═╝

@@ -59,7 +59,31 @@ console.log(req.param('data'));
 all: async function(req, res){
   var user = await  Numbers.find({'owner': req.session.userId})
     res.view('all.ejs', {user: user})
-  }
+  },
+  grouping: async function(req, res){
+    var data = await Groups.find({'owner': req.session.userId})
+    res.view('grouping.ejs', {groups: data})
+  },
+  remove: async function(req, res){
+    var data = await Groups.destroy({'owner': req.session.userId, 'name': req.param('name')})
+    res.send(data)
+  },
+  view: async function(req, res){
+    var data = await Numbers.find({'owner' : req.session.userId, 'group':{ contains: decodeURI(req.url.split('?id=')[1])} })
 
+    res.view('viewGroup.ejs', {groups: data})
+  },
+  removeMember: async function(req, res){
+    var data = await Numbers.find({'owner': req.session.userId, 'name': req.param('name'), 'group': { contains: req.param('group')}})
+    var updated = data[0]
+    var updatedArr = []
+    updated.group[updated.group.indexOf(req.param('group'))] = ''
+    for (var i = 0; i < updated.group.length; i++) {
+     updated.group != '' ? console.log('') : updatedArr.push(updated.group[i])
+    }
+    var done = await Numbers.update({'owner': req.session.userId, 'name': req.param('name'), 'group': { contains: req.param('group')}}, {'group': updatedArr})
+    res.send(done)
+
+  },
 
 };

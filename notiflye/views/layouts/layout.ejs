@@ -17,7 +17,17 @@
     <div id="page-wrap">
       <header id="page-header" class="navbar navbar-expand-sm navbar-dark bg-dark flex-column flex-md-row justify-content-between">
         <a class="navbar-brand mr-0" href="/">Notiflye</a>
+        <a href='/csv' class='nav-link ' style='color:white;' id="header-account-menu-link"  aria-haspopup="false" aria-expanded="false">Upload</a>
+        <a href='/welcome' class='nav-link ' style='color:white;' id="header-account-menu-link"  aria-haspopup="false" aria-expanded="false">Dashboard</a>
+        <a href='/all' class='nav-link mr-0' style='color:white;' id="header-account-menu-link"  aria-haspopup="false" aria-expanded="false">All</a>
+        <a href='/csv' class='nav-link mr-0' style='color:white;' id="header-account-menu-link"  aria-haspopup="false" aria-expanded="false">Upload</a>
+        <a href='/grouping' class='nav-link mr-0' style='color:white;' id="header-account-menu-link"  aria-haspopup="false" aria-expanded="false">Groups</a>
+
+
+
+
         <div class="navbar-nav flex-row">
+
           <!-- LOGGED-IN NAVIGATION -->
           <% if(me) { %>
           <a class="nav-item nav-link ml-2 ml-md-0 mr-2 mr-md-0" href="/contact">Help</a>
