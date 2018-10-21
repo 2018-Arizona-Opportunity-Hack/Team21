@@ -4,37 +4,42 @@
  * @description :: A model definition.  Represents a database table/collection/etc.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
+ module.exports = {
 
-module.exports = {
+   attributes: {
 
-  attributes: {
+     'name': {
+       type: 'String',
+       required: true
+     },
+     'message': {
+       type: 'String',
+       required: true
+     },
+     // 'targetGroups': {
+     //   type: 'json',
+     //   columnType: 'array',
+     //   required: false
+     // },
+     'targetGroups': {
+       collection: 'groups',
+       via: 'campaign',
 
-    'name': {
-      type: 'String',
-      required: true
-    },
-    'message': {
-      type: 'String',
-      required: true
-    },
-    // 'targetGroups': {
-    //   type: 'json',
-    //   columnType: 'array',
-    //   required: false
-    // },
-    'targetGroups': {
-      collection: 'groups',
-      via: 'campaign',
-
-    },
-    'responses':{
-      type:'json',
-      columnType: 'array',
-      required: false
-    },
+     },
+     'groups': {
+         type:'json',
+         columnType: 'array',
+         required: false
 
 
-  },
+     },
+     'responses':{
+       type:'json',
+       columnType: 'array',
+       required: false
+     },
 
-};
 
+   },
+
+ };
