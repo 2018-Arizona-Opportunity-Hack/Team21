@@ -13,7 +13,7 @@ module.exports = {
     res.view('pages/dashboard/welcome.ejs', {user: user})
   },
   csv:  function(req,res){
-    Groups.find({}).exec(function(err, group){
+    Groups.find({'owner': req.session.userId}).exec(function(err, group){
       if (err) {
         return res.serverError
       }
