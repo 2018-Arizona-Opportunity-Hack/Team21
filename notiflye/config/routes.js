@@ -37,6 +37,7 @@ module.exports.routes = {
   'GET /csv':                { action: 'Numbers/csv'},
   'POST /csv':               { action: 'Numbers/parseCSV'},
   'POST /search': {action: 'Numbers/search'},
+  'POST /testText' : { action: 'Queue/sendQueue'},
   //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗
   //  ╠═╣╠═╝║  ║╣ ║║║ ║║╠═╝║ ║║║║║ ║ ╚═╗
   //  ╩ ╩╩  ╩  ╚═╝╝╚╝═╩╝╩  ╚═╝╩╝╚╝ ╩ ╚═╝
