@@ -22,6 +22,7 @@ function send(){
   }
   axios.post('/sendMessage', data).then(function(data){
     console.log(data);
+    alert('Message Sent!!!')
   })
 }
 </script>

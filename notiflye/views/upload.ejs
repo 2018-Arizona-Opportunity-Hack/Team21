@@ -126,7 +126,7 @@ function finalSend(){
   console.log(finalData.group);
   axios.post('/csv', finalData).then(function(data){
     console.log(data.data);
-
+    alert('File Uploaded!!')
   })
 }
 

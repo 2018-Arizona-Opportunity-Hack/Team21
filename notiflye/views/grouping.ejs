@@ -27,11 +27,12 @@
   </div>
   <button id="<%= group.name %>btn" style='margin-top:-7rem;margin-left:30rem' onclick='remove("<%= group.name %>")' type="button" class='btn btn-danger' name="button">Remove</button>
   <a id="<%= group.name %>link" href="/new/msg/?id=<%= group.name %>"> <button id="<%= group.names %>link" type="button" style='position:absolute;margin-left:-39rem;margin-top:-4rem;' class='btn btn-info' name="button">New Message</button></a>
+  <a id="<%= group.name %>link2" href="/csv/file/<%= group.name %>"> <button id="<%= group.names %>link2" type="button" style='position:absolute;margin-left:-49rem;margin-top:-4rem;' class='btn btn-success' name="button">Download CSV</button></a>
+
 
 <% }) %>
 </div>
 </center>
-
 </div>
 
 <script type="text/javascript">
@@ -40,6 +41,8 @@
     var btn = document.getElementById(id + 'btn')
     var btn2 = document.getElementById(id + 'btn2')
     var btn3 = document.getElementById(id + 'link')
+    var btn3 = document.getElementById(id + 'link2')
+
 
 
 
