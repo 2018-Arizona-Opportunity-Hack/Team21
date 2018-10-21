@@ -4,7 +4,7 @@
  * @description :: Server-side actions for handling incoming requests.
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
-
+let Papa = require('papaparse');
 module.exports = {
   create: function(req, res){
     req.body.owner = req.session.userId
@@ -24,5 +24,25 @@ module.exports = {
       }
       res.send(user)
     })
+  },
+  getCSV: async function(req, res){
+    let group = req.param.group;
+    var data = await Numbers.find({'owner': req.session.userId, 'group': {contains: req.param('group')}})
+    var csv = Papa.unparse(data);
+    res.set('Content-Type', 'text/csv');
+    res.send(csv);
+
+    // let group = req.param.group;
+    // let json = [];
+    
+    // Groups.find({'id': id})
+    // .limit(1)
+    // .exec(async function(error, result){
+    //   var data = await Numbers.find({'owner': req.session.userId, 'group': {contains: req.param('group')}})
+    //   var csv = Papa.unparse(json);
+    //   res.send(csv);
+    // })
+    // // var csv = Papa.unparse(json);ss
+    // // res.send(csv);
   }
 };
