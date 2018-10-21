@@ -18,7 +18,6 @@ module.exports = {
   parseCSV: async function(req, res){
     let csvString = req.body.csvdata;
     let csvData = Papa.parse(csvString, {header: true});
-    // console.log(typeof csvData_proto_);
 
     delete csvData.meta
     delete csvData.errors
@@ -32,25 +31,18 @@ module.exports = {
     }
     }
     res.send(postData)
-    
-    // for ( let i = 0; i < csvData.data.length; i++){
-    //   let newEntry = {};
-    //   if(csvData.data[i].name && csvData.data[i].phoneNumber)
-    //   {
-    //     newEntry.name = csvData.data[i].name;
-    //     newEntry.phoneNumber = csvData.data[i].phoneNumber;
-    //     newEntry.email = csvData.data[i].email;
-    //   }
-    //   console.log(i + " " + JSON.stringify(newEntry));
-    //   Numbers.create(newEntry).exec(function(err, result){
-    //     if (err) {
-    //       console.log(err)
-    //     }
-    //     return console.log(result)
-    //   });
-    // }
-      //
-
-  }
+  },
+search: function(req, res){
+console.log(req.param('data'));
+  Groups.find({'name': {contains: req.param('data')}}).exec(function(err, user){
+    console.log('HERE');
+    if (err) {
+      console.log(err);
+      return res.serverError(err)
+    }
+    console.log(user);
+    return res.send(user)
+  })
+}
 
 };
