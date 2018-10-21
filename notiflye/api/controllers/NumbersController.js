@@ -12,7 +12,13 @@ module.exports = {
     res.view('index.ejs', {user: req.session.userId})
   },
   csv:  function(req,res){
-    res.view('upload.ejs', {})
+    Groups.find({}).exec(function(err, group){
+      if (err) {
+        return res.serverError(err)
+      }
+      res.view('upload.ejs', {group: group})
+
+    })
 
   },
   parseCSV: async function(req, res){
@@ -23,9 +29,10 @@ module.exports = {
     delete csvData.errors
     console.log(csvData);
     var postData =  ''
+    var groupData;
     for (var i = 0; i < csvData.data.length; i++) {
       if (!csvData.data[i].name == '') {
-      csvData.data[i].owner = req.session.userId
+      csvData.data[i]['owner'] = req.session.userId
        postData = await Numbers.create(csvData.data[i]).fetch()
       console.log(postData);
     }
@@ -34,6 +41,7 @@ module.exports = {
   },
 search: function(req, res){
 console.log(req.param('data'));
+
   Groups.find({'name': {contains: req.param('data')}}).exec(function(err, user){
     console.log('HERE');
     if (err) {
