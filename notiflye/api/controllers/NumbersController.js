@@ -85,5 +85,10 @@ all: async function(req, res){
     res.send(done)
 
   },
-
+  msg: async function(req, res){
+    var groups = await Numbers.find({'owner': req.session.userId, 'group': {contains: decodeURI(req.url.split('?id=')[1])}})
+    group = groups.group
+    console.log(groups.group);
+    res.view('msg.ejs', {groups: decodeURI(req.url.split('?id=')[1])})
+  }
 };
