@@ -72,24 +72,28 @@ module.exports = {
             if(error || !result){
                 res.send("Something didnt quite work right, please contact support.");
             } else {
-                console.log("we are here");
-                console.log(result)
+                // console.log("we are here");
+                // console.log(result)
                 let groupIDS = result[0].groups;
+                console.log("gid" + JSON.stringify(groupIDS))
                 for( let i = 0; i < groupIDS.length; i++){
                     console.log("k then")
-                    let message = groupIDS[i].message;
+                    console.log(result)
+                    let message = result[0].message;
                     let groupID = groupIDS[i].id;
+                    console.log(groupID)
                     Groups.find({'id': groupID})
                     .limit(1)
                     .exec(function(e, r){
                         // console.log("e? " + e)
                         // console.log("Group info");
                         // console.log(r)
-
-                        Numbers.find({'group': { contains: r[0].name}}
+                        console.log('name' + groupIDS[i].name);
+                        Numbers.find({'group': { contains: groupIDS[i].name}}
                         ).exec((error, response) => {
                             console.log("eee" + error);
                             console.log("reeee" + JSON.stringify(response));
+                            console.log(r[0]);
                             if(error || !response){
                                 res.send("Unable to complete action, please contact support");
                             } else {
