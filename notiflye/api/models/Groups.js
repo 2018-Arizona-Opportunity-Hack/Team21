@@ -11,13 +11,17 @@ module.exports = {
     'ids': {
       type: 'json',
       columnType: 'array',
-      required: true
+      required: false
     },
     'name': {
       type: 'String',
       required: true
-    }
+    },
 
+    'owner': {
+      type: 'String',
+      required: true
+    }
   }
 
 };
