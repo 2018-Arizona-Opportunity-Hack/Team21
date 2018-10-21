@@ -25,7 +25,8 @@ module.exports = {
       required: true
     },
     'group' : {
-      type: "String",
+      type: 'json',
+       columnType: 'array',
       required: false
     }
   }
