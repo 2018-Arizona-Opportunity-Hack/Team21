@@ -11,6 +11,7 @@ module.exports = {
             res.send("Index Page");
         },
         create: function(req,res){
+            //TODO: Multiple different messages for different formats (email,text)
             let campaignName = req.body.campaignName;
             let campaignMessage = req.body.campaignMessage;
             let targetGroups = [];

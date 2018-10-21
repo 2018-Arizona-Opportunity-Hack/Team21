@@ -41,13 +41,15 @@ module.exports.routes = {
   'POST /campaign/edit/:id':  { action: 'Campaign/edit'},
   'POST /campaign/addGroup/:campaignID/:groupID': { action: 'Campaign/addGroup'},
   'POST /campaign/removeGroup/:campaignID/:groupID': { action: 'Campaign/removeGroup'},
-
+  'GET /campaign/sendQueue/:campaignID/:subject': { action: 'Queue/postCommunications'},
   'POST /search': {action: 'Numbers/search'},
   'POST /group': {action: 'Groups/create'},
   'GET /group': {action: 'Groups/index'},
   'GET /all' : {action: 'Numbers/all'},
   'GET /notiflye' : {action: 'Notify/index'},
-    'POST /testText' : { action: 'Queue/sendQueue'},
+
+  'GET /testQueue': { action: 'Queue/sendCommunicationss'},
+  'POST /testText' : { action: 'Queue/sendQueue'},
   //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗
   //  ╠═╣╠═╝║  ║╣ ║║║ ║║╠═╝║ ║║║║║ ║ ╚═╗
   //  ╩ ╩╩  ╩  ╚═╝╝╚╝═╩╝╩  ╚═╝╩╝╚╝ ╩ ╚═╝
