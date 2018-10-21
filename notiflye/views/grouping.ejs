@@ -26,7 +26,7 @@
     </div><br>
   </div>
   <button id="<%= group.name %>btn" style='margin-top:-7rem;margin-left:30rem' onclick='remove("<%= group.name %>")' type="button" class='btn btn-danger' name="button">Remove</button>
-  <a href="/new/msg/?id=<%= group.name %>"> <button type="button" style='position:absolute;margin-left:-39rem;margin-top:-4rem;' class='btn btn-info' name="button">New Message</button></a>
+  <a id="<%= group.name %>link" href="/new/msg/?id=<%= group.name %>"> <button id="<%= group.names %>link" type="button" style='position:absolute;margin-left:-39rem;margin-top:-4rem;' class='btn btn-info' name="button">New Message</button></a>
 
 <% }) %>
 </div>
@@ -38,6 +38,10 @@
   function remove(id){
     var elem = document.getElementById(id)
     var btn = document.getElementById(id + 'btn')
+    var btn2 = document.getElementById(id + 'btn2')
+    var btn3 = document.getElementById(id + 'link')
+
+
 
 
     axios.post('/remGroup', {'name': id}).then(function(data){
@@ -46,6 +50,9 @@
     })
     elem.remove()
     btn.remove()
+    btn2.remove()
+    btn3.remove()
+
   }
 
   function addGroup(){
