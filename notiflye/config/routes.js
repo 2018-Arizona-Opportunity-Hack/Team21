@@ -15,7 +15,7 @@ module.exports.routes = {
   //  ║║║║╣ ╠╩╗╠═╝╠═╣║ ╦║╣ ╚═╗
   //  ╚╩╝╚═╝╚═╝╩  ╩ ╩╚═╝╚═╝╚═╝
   'GET /':                   { action: 'view-homepage-or-redirect' },
-  'GET /welcome':            { action: 'dashboard/view-welcome' },
+  'GET /welcome':            { action: 'Numbers/index' },
 
   'GET /faq':                { view:   'pages/faq' },
   'GET /legal/terms':        { view:   'pages/legal/terms' },
@@ -39,6 +39,7 @@ module.exports.routes = {
   'POST /search': {action: 'Numbers/search'},
   'POST /group': {action: 'Groups/create'},
   'GET /group': {action: 'Groups/index'},
+  'GET /all' : {action: 'Numbers/all'},
   //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗
   //  ╠═╣╠═╝║  ║╣ ║║║ ║║╠═╝║ ║║║║║ ║ ╚═╗
   //  ╩ ╩╩  ╩  ╚═╝╝╚╝═╩╝╩  ╚═╝╩╝╚╝ ╩ ╚═╝

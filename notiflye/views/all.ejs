@@ -1,6 +1,6 @@
 <div id="welcome">
   <div class="container">
-    <h1>Dashboard</h1><hr>
+    <h1>All Entries</h1><hr>
     <table class="table">
 <thead>
   <tr>
@@ -10,12 +10,8 @@
   </tr>
 </thead>
 <tbody>
-
-<% var x = 0 %>
     <% _.each(user, function(user){ %>
-
-      <% x = x + 1 %>
-    <tr id='<%= x %>'>
+    <tr>
       <td> <%= user.name %></td>
       <td> <%= user.phoneNumber %> </td>
       <td><%= user.email %></td>
@@ -25,19 +21,8 @@
 
 </tbody>
 </table>
-<a style='float:right' href="/all">Show All</a>
     </div>
 </div>
 </div>
-<script type="text/javascript">
-val = <%= x %>
-if (val > 5 ) {
-  console.log(val);
-  for (var i = 1; i < val - 3; i++) {
-    console.log(i);
 
-    document.getElementById(i.toString()).remove()
-  }
-}
-</script>
 <%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>

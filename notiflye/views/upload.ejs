@@ -11,7 +11,7 @@
 <!-- See https://stackoverflow.com/questions/14446447/how-to-read-a-local-text-file -->
 <div class="">
 
-<form action="/csv" method="post">
+<form action="" method="">
 <b>  <label for="csvdata" class='label'>Data:</label></b>
 <input class='form-control' style='width:30rem' type="file" onchange='openFile(event)' name="csvraw"/>
 <input type="text" style='margin-top:-2.5rem;margin-left:32rem;width:30rem' class='form-control' id='group' placeholder='New Group' name="group" value="">
@@ -23,6 +23,8 @@
 </div>
   <br>
   <textarea class='form-control' rows="15" style='width:30rem' id="csvdata" name="csvdata" placeholder="Paste Data here"></textarea>
+  <input type="hidden" name="group" id='swap' value="">
+
   <div class="card" style='width:30rem;margin-top: -23.35em; position: absolute;margin-left:32em;height:23.35rem'>
     <div class="card head">
       <center><br>
@@ -38,8 +40,7 @@
     </div>
   </div>
   <br>
-
-  <button style='margin-left:57.2rem' class='btn btn-info'>Submit</button>
+  <button style='margin-left:57.2rem' onclick='finalSend()' class='btn btn-info'>Submit</button>
 </form>
 </div>
 
@@ -62,45 +63,59 @@ var openFile = function(event){
 
 }
 var groups = []
-var counter = false
-<% _.each(group, function(group){ %>
-
-
-document.getElementById("<%= group.name %>").addEventListener('mouseover', function(){
-  if (document.getElementById("<%= group.name %>").style.backgroundColor == 'white' && counter == true) {
-    document.getElementById("<%= group.name %>").style.backgroundColor = 'lightblue'
-  }
-})
-
-
-<% }) %>
+var finalData = {
+  group: []
+}
+if (finalData.group == undefined) {
+  finalData.group = []
+}
 
 function picked(name){
 var item = document.getElementById(name)
 
 
 
+
 if (item.style.backgroundColor == 'lightblue') {
   item.style.backgroundColor = 'white'
-  data.group = ''
-  
+  finalData.group.pop(name)
+  document.getElementById('swap').value = finalData.group
 }
 else{
   item.style.backgroundColor = 'lightblue'
-  counter = true
-  data.group = name
+  finalData.group.push(name)
+  document.getElementById('swap').value = finalData.group
+
 }
 
-console.log(data);
+// console.log(finalData.group);
 }
 function create(){
   var data = document.getElementById('group').value
+if (document.getElementById(data) == undefined) {
 
   axios.post('/group', {"name": data}).then(function(rdata){
     if (rdata.status == 200) {
       var string = "<center class='select' onclick='picked("+ '"' + data+'"' +")' id='"+data+"'>  <p   style='height:1rem;'> "+ data +" </p>"
       document.getElementById('cBody').innerHTML = document.getElementById('cBody').innerHTML + string
     }
+
+  })
+}
+else{
+  alert('Cannot Add Duplicate Name!!')
+  document.getElementById('group').value = ''
+}
+}
+function finalSend(){
+  finalData = {
+  'csvdata' : document.getElementById('csvdata').value,
+  'group' : finalData.group
+  }
+  console.log('HERE');
+  console.log(finalData.group);
+  axios.post('/csv', finalData).then(function(data){
+    console.log(data.data);
   })
 }
 
