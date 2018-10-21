@@ -14,7 +14,7 @@ module.exports = {
   csv:  function(req,res){
     Groups.find({}).exec(function(err, group){
       if (err) {
-        return res.serverError(err)
+        return res.serverError
       }
       res.view('upload.ejs', {group: group})
 

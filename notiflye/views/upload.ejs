@@ -69,7 +69,6 @@ var counter = false
 document.getElementById("<%= group.name %>").addEventListener('mouseover', function(){
   if (document.getElementById("<%= group.name %>").style.backgroundColor == 'white' && counter == true) {
     document.getElementById("<%= group.name %>").style.backgroundColor = 'lightblue'
-
   }
 })
 
@@ -84,7 +83,7 @@ var item = document.getElementById(name)
 if (item.style.backgroundColor == 'lightblue') {
   item.style.backgroundColor = 'white'
   data.group = ''
-
+  
 }
 else{
   item.style.backgroundColor = 'lightblue'
